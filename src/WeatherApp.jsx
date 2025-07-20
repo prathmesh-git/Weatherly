@@ -12,10 +12,14 @@ export default function WeatherApp() {
     humidity: 47,
     weather: "Haze",
   });
+
+  let updateInfo = (newInfo) => {
+    setWeatherInfo(newInfo);
+  };
   return (
     <div style={{ textAlign: "center" }}>
       <h3>Weatherly</h3>
-      <SearchBox />
+      <SearchBox updateInfo={updateInfo} />
       <InfoBox info={weatherInfo} />
     </div>
   );
