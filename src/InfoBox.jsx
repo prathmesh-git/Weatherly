@@ -4,22 +4,12 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import "./InfoBox.css";
 
-export default function InfoBox() {
+export default function InfoBox({ info }) {
   const INIT_URL =
     "https://images.unsplash.com/photo-1579003593419-98f949b9398f?w=1000&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D";
-  let info = {
-    city: "Delhi",
-    feelslike: 24.84,
-    temp: 25.05,
-    tempMin: 25.05,
-    tempMax: 25.05,
-    humidity: 47,
-    weather: "Haze",
-  };
 
   return (
     <div className="InfoBox">
-      <h1>WeatherInfo - {info.weather}</h1>
       <div className="card-container">
         <Card sx={{ maxWidth: 345 }}>
           <CardMedia

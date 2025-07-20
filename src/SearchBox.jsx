@@ -31,6 +31,7 @@ export default function SearchBox() {
     evt.preventDefault();
     console.log(city);
     setCity("");
+    getWeatherInfo();
   };
   return (
     <>
@@ -46,7 +47,7 @@ export default function SearchBox() {
           />
           <br></br>
           <br></br>
-          <Button variant="outlined" type="submit">
+          <Button variant="contained" type="submit">
             Search
           </Button>
         </form>
