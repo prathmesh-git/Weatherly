@@ -8,8 +8,19 @@ export default function SearchBox() {
   const API_URL = "https://api.openweathermap.org/data/2.5/weather{city name}";
   const API_key = "0af1df45e5bd5dfd4f7016d05007817f";
 
-  let getWeatherUnfo = async (city) => {
-    await fetch(`${API_URL}?q=${city}&appid=${API_key}`);
+  let getWeatherInfo = async (city) => {
+    let response = await fetch(`${API_URL}?q=${city}&appid=${API_key}`);
+    let jsonResponse = await response.json();
+
+    let result = {
+      city: city,
+      feelslike: jsonResponse.main.feels_like,
+      temp: jsonResponse.main.temp,
+      tempMin: jsonResponse.main.temp_min,
+      tempMax: jsonResponse.main.temp_max,
+      humidity: jsonResponse.main.humidity,
+      weather: jsonResponse.weather[0].description,
+    };
   };
 
   let handleChange = (evt) => {
