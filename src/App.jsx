@@ -1,23 +1,29 @@
-import { ThemeProvider, createTheme, CssBaseline } from "@mui/material";
+import {
+  ThemeProvider,
+  createTheme,
+  CssBaseline,
+  responsiveFontSizes,
+} from "@mui/material";
 import WeatherApp from "./WeatherApp";
 import "./App.css";
 
-// Define a dark theme with a custom primary color
-const darkTheme = createTheme({
+let darkTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#90caf9", // Light blue
+      main: "#90caf9", // Soft blue
     },
     background: {
-      default: "#121212", // Deep dark
-      paper: "#1e1e1e", // Card background
+      default: "#121212",
+      paper: "#1e1e1e",
     },
   },
   typography: {
     fontFamily: '"Poppins", sans-serif',
   },
 });
+
+darkTheme = responsiveFontSizes(darkTheme); // make typography responsive
 
 const App = () => {
   return (

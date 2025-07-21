@@ -4,7 +4,8 @@ import SearchBox from "./SearchBox";
 import InfoBox from "./InfoBox";
 
 export default function WeatherApp() {
-  const theme = useTheme(); // access current theme
+  const theme = useTheme();
+
   const [weatherInfo, setWeatherInfo] = useState({
     city: "Delhi",
     feelslike: 24.84,
@@ -20,13 +21,26 @@ export default function WeatherApp() {
   };
 
   return (
-    <Container maxWidth="sm" sx={{ py: 4 }}>
+    <Container
+      maxWidth="sm"
+      sx={{
+        py: 4,
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
       <Paper
-        elevation={4}
+        elevation={6}
         sx={{
           p: 4,
           borderRadius: 4,
-          backgroundColor: theme.palette.background.paper,
+          backgroundColor:
+            theme.palette.mode === "dark"
+              ? theme.palette.grey[900]
+              : theme.palette.grey[100],
+          width: "100%",
         }}
       >
         <Typography
