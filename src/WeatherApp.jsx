@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Container, Typography, Paper, Box, useTheme } from "@mui/material";
 import SearchBox from "./SearchBox";
 import InfoBox from "./InfoBox";
+import logo from "./assets/favicon.png";
 
 export default function WeatherApp() {
   const theme = useTheme();
@@ -24,23 +25,27 @@ export default function WeatherApp() {
     <Container
       maxWidth="sm"
       sx={{
-        py: 4,
-        minHeight: "100vh",
+        py: 6,
+        px: 3,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
       }}
     >
       <Paper
-        elevation={6}
+        elevation={10}
         sx={{
           p: 4,
-          borderRadius: 4,
-          backgroundColor:
-            theme.palette.mode === "dark"
-              ? theme.palette.grey[900]
-              : theme.palette.grey[100],
-          width: "100%",
+          borderRadius: 5,
+          width: {
+            xs: "90%",
+            sm: "500px",
+            md: "600px",
+            lg: "800px",
+          },
+          backgroundColor: "#1e1e1e",
+          color: "#fff",
+          boxShadow: "0 8px 30px rgba(0,0,0,0.5)",
         }}
       >
         <Typography
@@ -49,11 +54,24 @@ export default function WeatherApp() {
           color="primary"
           fontWeight="bold"
           textAlign="center"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 1,
+            mb: 4,
+          }}
         >
+          <img
+            src="/favicon.png"
+            alt="Weatherly Logo"
+            height="38"
+            style={{ filter: "drop-shadow(0 0 4px #90caf9)" }}
+          />
           Weatherly
         </Typography>
 
-        <Box sx={{ mt: 3, mb: 4 }}>
+        <Box sx={{ mt: 2, mb: 4 }}>
           <SearchBox updateInfo={updateInfo} />
         </Box>
 

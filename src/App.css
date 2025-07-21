@@ -1,4 +1,4 @@
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
@@ -6,6 +6,18 @@ body {
   background-attachment: fixed;
   min-height: 100vh;
   color: #ffffff;
+  scroll-behavior: smooth;
+} */
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at top, #0f2027, #203a43, #2c5364);
+  font-family: "Roboto", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   scroll-behavior: smooth;
 }
 
