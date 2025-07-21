@@ -16,17 +16,26 @@ export default function SearchBox({ updateInfo }) {
   const API_URL = "https://api.openweathermap.org/data/2.5/weather";
   const API_key = import.meta.env.VITE_WEATHER_API_KEY;
 
+  const formatCityName = (name) => {
+    return name
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   const getWeatherInfo = async () => {
+    const formattedCity = formatCityName(city);
     try {
       const response = await fetch(
-        `${API_URL}?q=${city}&appid=${API_key}&units=metric`
+        `${API_URL}?q=${formattedCity}&appid=${API_key}&units=metric`
       );
       const jsonResponse = await response.json();
 
       if (!response.ok) throw new Error("Invalid city");
 
       return {
-        city: city,
+        city: formattedCity, // use the formatted version here
         feelslike: jsonResponse.main.feels_like,
         temp: jsonResponse.main.temp,
         tempMin: jsonResponse.main.temp_min,
