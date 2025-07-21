@@ -1,11 +1,20 @@
 import { useState } from "react";
-import { TextField, Button, Box, Typography, Stack } from "@mui/material";
+import {
+  TextField,
+  Button,
+  Box,
+  Typography,
+  Stack,
+  useTheme,
+} from "@mui/material";
 
 export default function SearchBox({ updateInfo }) {
   const [city, setCity] = useState("");
   const [error, setError] = useState(false);
+  const theme = useTheme();
+
   const API_URL = "https://api.openweathermap.org/data/2.5/weather";
-  const API_key = "0af1df45e5bd5dfd4f7016d05007817f";
+  const API_key = import.meta.env.VITE_WEATHER_API_KEY;
 
   const getWeatherInfo = async () => {
     try {
@@ -47,18 +56,55 @@ export default function SearchBox({ updateInfo }) {
   };
 
   return (
-    <Box component="form" onSubmit={handleSubmit} sx={{ textAlign: "center" }}>
+    <Box
+      component="form"
+      onSubmit={handleSubmit}
+      sx={{ textAlign: "center", mt: 2 }}
+    >
       <Stack spacing={2} alignItems="center">
         <TextField
           id="city"
-          label="City Name"
+          label="Enter City"
           variant="outlined"
           required
           value={city}
           onChange={handleChange}
-          sx={{ width: "100%", maxWidth: "300px" }}
+          sx={{
+            width: "100%",
+            maxWidth: "300px",
+            input: {
+              color: theme.palette.text.primary,
+            },
+            label: {
+              color: theme.palette.text.secondary,
+            },
+            "& .MuiOutlinedInput-root": {
+              "& fieldset": {
+                borderColor: theme.palette.divider,
+              },
+              "&:hover fieldset": {
+                borderColor: theme.palette.primary.main,
+              },
+              "&.Mui-focused fieldset": {
+                borderColor: theme.palette.primary.main,
+              },
+            },
+          }}
         />
-        <Button variant="contained" type="submit">
+        <Button
+          variant="contained"
+          type="submit"
+          sx={{
+            px: 4,
+            py: 1,
+            fontWeight: "bold",
+            borderRadius: 2,
+            backgroundColor: theme.palette.primary.main,
+            "&:hover": {
+              backgroundColor: theme.palette.primary.dark,
+            },
+          }}
+        >
           Search
         </Button>
         {error && (
